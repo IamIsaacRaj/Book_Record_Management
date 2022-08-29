@@ -76,6 +76,77 @@ router.get("/issued/by_user",(req,res) =>{
   });
 });
 
+/** 
+ * Route :/book
+ * method : POST
+ * Description : create new book
+ * Acess : public
+ * Parameter : none
+ * date : authour, name, gener,price,publisher,id 
+*/ 
+router.post("/",(req,res) => {
+  const data = req.body;
+
+  if(!data){
+    return res.status(400).json({
+      success : false,
+      message : "No data is provided",
+    });
+  }
+
+  const book = books.find((each) => each.id === data.id);
+
+  if(book){
+    return res.status(404).json({
+      success : false,
+      message : "Book already exits with this id, please provide a unique id",
+    });
+  }
+
+  const allBooks = [...books,data];
+
+  return res.status(200).json({
+    success : true,
+    message : allBooks,
+  })
+})
+
+/** 
+ * Route :/book/:id
+ * method : PUT
+ * Description : Update book
+ * Acess : public
+ * Parameter : id
+ * date : authour, name, gener,price,publisher 
+*/ 
+
+router.put("/:id", (req,res) => {
+  const { id } = req.params;
+  const{ data } = req.body;
+
+  const book = books.find((each) => each.id === id);
+
+  if(!book){
+    return res.status(400).json({
+      success : false,
+      message : "Book Not Found",
+    });
+  }
+
+  const updateBooK = books.map((each) => {
+    if(each.id === id){
+      return {...each,...data} ;
+    } else {
+      return each;
+    }
+  });
+
+  return res.status(200).json({
+    success : true,
+    data : updateData
+  });
+});
+
 
 //default export
 module.exports = router
