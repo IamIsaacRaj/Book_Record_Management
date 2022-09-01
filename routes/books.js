@@ -148,11 +148,11 @@ router.put("/:id", (req,res) => {
 });
 
 /**
- * Route: /books/issued/with-fine
- * Method: GET
- * Description: Get issued books with fine
- * Access: Public
- * Parameters: none
+   * Route: /books/issued/with-fine
+   * Method: GET
+   * Description: Get issued books with fine
+   * Access: Public
+   * Parameters: none
  */
 
  router.get("/issued/with-fine", (req, res) => {
