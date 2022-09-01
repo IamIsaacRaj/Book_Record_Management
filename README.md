@@ -42,8 +42,7 @@ GET: Get all issued books✅
 
 ## /books/issued/withFine
 
-// TODO TASK // 🏁
-GET: Get all issued books with fine
+GET: Get all issued books with fine ✅
 
 # Subscription Types
 
