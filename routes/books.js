@@ -82,10 +82,10 @@ router.get("/issued/by_user",(req,res) =>{
  * Description : create new book
  * Acess : public
  * Parameter : none
- * date : authour, name, gener,price,publisher,id 
+ * data : authour, name, gener,price,publisher,id 
 */ 
 router.post("/",(req,res) => {
-  const data = req.body;
+  const {data} = req.body;
 
   if(!data){
     return res.status(400).json({
@@ -122,7 +122,7 @@ router.post("/",(req,res) => {
 
 router.put("/:id", (req,res) => {
   const { id } = req.params;
-  const{ data } = req.body;
+  const {data} = req.body;
 
   const book = books.find((each) => each.id === id);
 
@@ -143,7 +143,7 @@ router.put("/:id", (req,res) => {
 
   return res.status(200).json({
     success : true,
-    data : updateData
+    data : updateBooK
   });
 });
 
