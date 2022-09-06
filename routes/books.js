@@ -48,14 +48,14 @@ router.get('/',(req,res) => {
 */ 
 
 router.get("/issued/by_user",(req,res) =>{
-  const userWithIssuedBook = users.filter((each) =>{
+  const userWithIssuedBooks = users.filter((each) =>{
     if(each.issuedBook) return each;
   });
 
   const issuedBooks = [];
 
   userWithIssuedBooks.forEach((each) => {
-      const book = books.find((book) => book.id === each.issuedbook);
+      const book = books.find((book) => book.id === each.issuedBook);
 
       book.issuedBy = each.name;
       book.issuedDate = each.issuedDate;
